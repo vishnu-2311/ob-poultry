@@ -448,3 +448,41 @@ class TestPoultryModule(IntegrationTestCase):
 		}).insert(ignore_permissions=True)
 		self.assertEqual(log.feed_per_bird_g, 120)  # TC-DASH-01, 12kg*1000/100 birds
 		self.assertEqual(log.damage_pct, 20)  # TC-DASH-02, 20 dirty / 100 total * 100
+
+	def test_egg_separation_total_auto_calculation(self):
+		batch = frappe.get_doc({
+			"doctype": "Poultry Batch",
+			"shed": self.shed.name,
+			"breed": self.breed.name,
+			"start_date": nowdate(),
+			"initial_bird_count": 100,
+		}).insert(ignore_permissions=True)
+
+		log = frappe.get_doc({
+			"doctype": "Poultry Daily Log",
+			"batch": batch.name,
+			"log_date": nowdate(),
+			"egg_separation": [
+				{
+					"batch": batch.name,
+					"single_yolk": 50,
+					"double_yolk": 10,
+					"broken_eggs": 5,
+					"cracked_eggs": 3,
+					"yolkless": 2,
+				},
+				{
+					"batch": batch.name,
+					"single_yolk": 20,
+					"double_yolk": 5,
+					"broken_eggs": 2,
+					"cracked_eggs": 1,
+					"yolkless": 0,
+				},
+			],
+		})
+		log.insert(ignore_permissions=True)
+
+		self.assertEqual(log.egg_separation[0].total, 70)
+		self.assertEqual(log.egg_separation[1].total, 28)
+		self.assertEqual(log.total_separated_eggs, 98)

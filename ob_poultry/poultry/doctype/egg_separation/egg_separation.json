@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-10-24 15:38:39.944878",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "batch",
+  "single_yolk",
+  "double_yolk",
+  "broken_eggs",
+  "cracked_eggs",
+  "yolkless",
+  "total",
+  "egg_separation_settings"
+ ],
+ "fields": [
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Batch",
+   "options": "Poultry Batch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "single_yolk",
+   "fieldtype": "Int",
+   "label": "Single Yolk",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "double_yolk",
+   "fieldtype": "Int",
+   "label": "Double Yolk",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "broken_eggs",
+   "fieldtype": "Int",
+   "label": "Broken Eggs",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "cracked_eggs",
+   "fieldtype": "Int",
+   "label": "Cracked Eggs",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "yolkless",
+   "fieldtype": "Int",
+   "label": "Yolkless",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Int",
+   "label": "Total",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "egg_separation_settings",
+   "fieldtype": "Link",
+   "label": "Egg Separation Settings",
+   "options": "Egg Separation Settings"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-24 17:13:14.493553",
+ "modified_by": "Administrator",
+ "module": "Poultry",
+ "name": "Egg Separation",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

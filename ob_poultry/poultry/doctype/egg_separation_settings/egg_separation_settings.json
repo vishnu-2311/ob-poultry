@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "creation": "2026-10-24 17:31:56.256704",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_single_yolk",
+  "enable_double_yolk",
+  "enable_cracked_eggs",
+  "enable_broken_eggs",
+  "enable_yolkless",
+  "enable_total"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enable_single_yolk",
+   "fieldtype": "Check",
+   "label": "Enable Single Yolk"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_double_yolk",
+   "fieldtype": "Check",
+   "label": "Enable Double Yolk"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_cracked_eggs",
+   "fieldtype": "Check",
+   "label": "Enable Cracked Eggs"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_broken_eggs",
+   "fieldtype": "Check",
+   "label": "Enable Broken Eggs"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_yolkless",
+   "fieldtype": "Check",
+   "label": "Enable Yolkless"
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_total",
+   "fieldtype": "Check",
+   "label": "Enable Total"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-24 17:33:36.879595",
+ "modified_by": "Administrator",
+ "module": "Poultry",
+ "name": "Egg Separation Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1
+}

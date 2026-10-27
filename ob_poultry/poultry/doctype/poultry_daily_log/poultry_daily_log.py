@@ -2,7 +2,7 @@ import frappe
 from erpnext.stock.get_item_details import get_conversion_factor
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import date_diff, flt
+from frappe.utils import cint, date_diff, flt
 
 DAMAGED_EGG_GRADES = ("Cracked Egg", "Waste Egg", "Dirty Egg")
 
@@ -20,6 +20,7 @@ class PoultryDailyLog(Document):
 		self.compute_daily_mortality_pct()
 		self.apply_feed_uom_conversion()
 		self.compute_egg_rollup()
+		self.compute_egg_separation_rollup()
 		self.compute_damage_pct()
 		self.compute_feed_per_bird_g()
 		self.compute_expenses_total()
@@ -42,6 +43,19 @@ class PoultryDailyLog(Document):
 	def compute_damage_pct(self):
 		damaged = sum(flt(row.production_count) for row in self.egg_entries if row.grade in DAMAGED_EGG_GRADES)
 		self.damage_pct = (damaged / self.total_eggs_produced * 100) if self.total_eggs_produced else 0
+
+	def compute_egg_separation_rollup(self):
+		grand_total = 0
+		for row in getattr(self, "egg_separation", []):
+			row.total = (
+				cint(row.single_yolk)
+				+ cint(row.double_yolk)
+				+ cint(row.broken_eggs)
+				+ cint(row.cracked_eggs)
+				+ cint(row.yolkless)
+			)
+			grand_total += row.total
+		self.total_separated_eggs = grand_total
 
 	def compute_feed_per_bird_g(self):
 		current_bird_count = self.batch_doc.current_bird_count
